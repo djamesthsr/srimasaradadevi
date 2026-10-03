@@ -1,0 +1,634 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="web_standard" name="shell-type">
+<style>
+    @layer base {
+      html, body { margin: 0; padding: 0; }
+      body { overscroll-behavior: none; }
+      main > :first-child { margin-top: 0 !important; }
+      main > :last-child { margin-bottom: 0 !important; }
+    }
+    ::-webkit-scrollbar { display: none; }
+  </style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-container": "#efeeea",
+            "on-error": "#ffffff",
+            "terracotta-vermilion": "#9E2A2B",
+            "surface-container-high": "#eae8e4",
+            "error": "#ba1a1a",
+            "inverse-primary": "#ffb59a",
+            "on-surface": "#1b1c1a",
+            "saffron-bhagwa": "#E65100",
+            "primary-fixed-dim": "#ffb59a",
+            "on-secondary": "#ffffff",
+            "on-primary-fixed": "#380d00",
+            "tertiary-fixed-dim": "#ffb3ae",
+            "on-tertiary-fixed-variant": "#8a1b1e",
+            "inverse-on-surface": "#f2f0ed",
+            "on-primary-fixed-variant": "#802a00",
+            "surface": "#fbf9f5",
+            "sandalwood-muted": "#F5EFEB",
+            "saffron-vibrant": "#F57C00",
+            "on-secondary-fixed": "#2f1500",
+            "tertiary-fixed": "#ffdad7",
+            "on-tertiary-container": "#fffbff",
+            "on-surface-variant": "#5a4138",
+            "outline": "#8f7066",
+            "surface-container-highest": "#e4e2de",
+            "secondary-container": "#fe932c",
+            "on-secondary-fixed-variant": "#6e3900",
+            "secondary-fixed-dim": "#ffb77d",
+            "sandalwood-cream": "#FDFBF7",
+            "on-error-container": "#93000a",
+            "surface-container-low": "#f5f3ef",
+            "secondary-fixed": "#ffdcc3",
+            "charcoal-soft": "#4A3E3D",
+            "on-tertiary": "#ffffff",
+            "surface-variant": "#e4e2de",
+            "primary-fixed": "#ffdbcf",
+            "background": "#fbf9f5",
+            "on-secondary-container": "#663500",
+            "marigold-gold": "#FFB300",
+            "secondary": "#904d00",
+            "outline-variant": "#e3bfb2",
+            "surface-dim": "#dbdad6",
+            "tertiary-container": "#c94947",
+            "primary": "#a43700",
+            "surface-bright": "#fbf9f5",
+            "on-primary": "#ffffff",
+            "on-background": "#1b1c1a",
+            "inverse-surface": "#30312e",
+            "surface-container-lowest": "#ffffff",
+            "on-tertiary-fixed": "#410004",
+            "tertiary": "#a73131",
+            "error-container": "#ffdad6",
+            "surface-tint": "#a83900",
+            "sacred-parchment": "#EFE7D8",
+            "charcoal-bronze": "#241E1C",
+            "primary-container": "#cd4700",
+            "on-primary-container": "#fffbff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-sm": "0.5rem",
+            "margin": "3rem",
+            "space-md": "1rem",
+            "gutter": "1.5rem",
+            "space-xl": "2.5rem",
+            "space-lg": "1.75rem",
+            "gutter-mobile": "1rem",
+            "margin-mobile": "1.25rem",
+            "space-xs": "0.25rem",
+            "space-2xl": "4rem"
+          },
+          "fontFamily": {
+            "label-sm": ["Plus Jakarta Sans"],
+            "headline-display-mobile": ["Playfair Display"],
+            "headline-md": ["Playfair Display"],
+            "headline-lg-mobile": ["Playfair Display"],
+            "body-md": ["Plus Jakarta Sans"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"],
+            "title-scripture": ["Playfair Display"],
+            "headline-sm": ["Playfair Display"],
+            "headline-lg": ["Playfair Display"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "headline-display": ["Playfair Display"]
+          },
+          "fontSize": {
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+            "headline-display-mobile": ["34px", { "lineHeight": "42px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-md": ["26px", { "lineHeight": "34px", "fontWeight": "600" }],
+            "headline-lg-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "0em", "fontWeight": "600" }],
+            "body-md": ["16px", { "lineHeight": "26px", "fontWeight": "400" }],
+            "body-lg": ["18px", { "lineHeight": "30px", "fontWeight": "400" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.08em", "fontWeight": "600" }],
+            "title-scripture": ["22px", { "lineHeight": "34px", "fontWeight": "400" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+            "headline-lg": ["38px", { "lineHeight": "48px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-sm": ["14px", { "lineHeight": "22px", "fontWeight": "400" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.06em", "fontWeight": "600" }],
+            "headline-display": ["52px", { "lineHeight": "64px", "letterSpacing": "-0.015em", "fontWeight": "600" }]
+          }
+        }
+      }
+    };
+  </script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;family=Plus+Jakarta+Sans:wght@100..900&amp;display=swap" rel="stylesheet">
+</head>
+<body class="bg-surface font-body-md text-on-surface antialiased selection:bg-saffron-bhagwa selection:text-on-primary">
+<!-- HEADER -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-sandalwood-cream/95 backdrop-blur-xl shadow-[0_4px_24px_rgba(158,42,43,0.06)]">
+<div class="bg-sandalwood-muted px-gutter py-1">
+<div class="max-w-[1200px] mx-auto flex flex-col md:flex-row items-center justify-between gap-1 text-on-surface-variant font-label-sm text-label-sm tracking-widest uppercase"><span class="font-title-scripture normal-case tracking-normal text-primary font-medium text-xs md:text-sm">॥ श्री गणेशाय नमः ॥ • ॥ सन्तु सर्वे सुखिनः ॥</span>
+<span class="opacity-85 text-[11px] tracking-wider uppercase font-label-sm">srimasaradadevi.org • Sri Ramakrishna • Sri Sarada Devi • Swami Vivekananda</span></div>
+</div>
+<div class="h-20 max-w-[1200px] mx-auto px-gutter flex items-center justify-between"><a class="flex items-center gap-space-md group" data-path="home" href="index.html">
+  <img alt="Swami Chidananda" class="w-10 h-10 rounded-full object-cover shadow-[0_2px_8px_rgba(158,42,43,0.12)] border border-sacred-parchment" src="logo.png">
+  <div class="flex flex-col">
+    <div class="font-headline-sm text-headline-sm text-charcoal-bronze leading-tight group-hover:text-primary transition-colors">Swami Chidananda</div>
+    <div class="font-label-sm text-label-sm text-on-surface-variant tracking-wider uppercase">VEDANTA TEACHER &amp; SPIRITUAL GUIDE</div>
+  </div>
+</a>
+<div class="flex items-center gap-6">
+  <nav class="hidden md:flex items-center gap-6 font-label-lg text-label-lg">
+    <a class="text-on-surface-variant hover:text-primary transition-colors py-1.5" data-path="home" href="index.html">Home</a>
+    <a class="text-on-surface-variant hover:text-primary transition-colors py-1.5" data-path="about" href="about.html">About</a>
+    <a class="text-on-surface-variant hover:text-primary transition-colors py-1.5" data-path="books" href="books.html">Books</a>
+    <a aria-current="page" class="bg-primary text-on-primary px-4 py-1.5 rounded-lg font-medium shadow-sm transition-all" data-path="gallery" href="gallery.html">Gallery</a>
+    <a class="text-on-surface-variant hover:text-primary transition-colors py-1.5" data-path="media-library" href="media.html">Media Library</a>
+  </nav>
+  <div class="flex items-center ml-2">
+    <button class="w-9 h-9 rounded-full bg-saffron-bhagwa/10 text-primary hover:bg-primary hover:text-on-primary border border-sacred-parchment flex items-center justify-center transition-colors" title="Spiritual Archives &amp; Shrines">
+      <span class="material-symbols-outlined text-xl">spa</span>
+    </button>
+  </div>
+</div></div>
+</header>
+<!-- MAIN CONTENT -->
+<main class="w-full pt-28 bg-surface min-h-[calc(100vh-80px)]">
+<!-- HERO SECTION: SERENE & DIGNIFIED PHOTO GALLERY INTRO -->
+<section class="w-full bg-sandalwood-cream border-b border-sacred-parchment/80 pt-8 pb-12 px-gutter">
+<div class="max-w-[1200px] mx-auto text-center flex flex-col items-center">
+<!-- Sacred Vedic Sanskrit Motif -->
+<div class="inline-flex items-center gap-space-xs text-primary mb-3">
+<span class="font-title-scripture text-title-scripture text-primary">ॐ</span>
+<span class="font-label-sm text-label-sm tracking-widest text-primary uppercase font-semibold">॥ चित्र दर्शनम् ॥ SACRED PHOTO ARCHIVES</span>
+<span class="font-title-scripture text-title-scripture text-primary">ॐ</span>
+</div>
+<h1 class="font-headline-display text-headline-display md:text-[46px] text-charcoal-bronze max-w-3xl leading-tight mb-space-sm">
+          The Life &amp; Sacred Moments of <span class="text-primary italic font-title-scripture font-normal">Swami Chidananda</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto leading-relaxed mb-space-lg">
+          An authentic photographic chronicle preserving the quiet contemplation, Himalayan monastic austerities, sacred darshans, and global spiritual missions of revered Sri Swamiji Maharaj (1916–2008).
+        </p>
+<!-- Simple Archival Metric Badges -->
+<div class="flex flex-wrap items-center justify-center gap-6 text-on-surface-variant font-label-sm text-label-sm border-t border-sacred-parchment pt-4">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-base text-primary">photo_library</span>
+<span class="">Over 250 Curated Photographs</span>
+</div>
+<span class="text-outline-variant">•</span>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-base text-primary">history_edu</span>
+<span class="">Spanning 1943 — 2008</span>
+</div>
+<span class="text-outline-variant">•</span>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-base text-primary">location_on</span>
+<span class="">Rishikesh, Himalayas &amp; Global Satsangs</span>
+</div>
+</div>
+</div>
+</section>
+<!-- FILTER TABS & SEARCH BAR -->
+<section class="sticky top-20 z-30 bg-surface/95 backdrop-blur-md border-b border-sacred-parchment shadow-sm py-3 px-gutter">
+<div class="max-w-[1200px] mx-auto flex flex-col md:flex-row items-center justify-between gap-space-sm">
+<!-- Category Filters -->
+<div class="flex items-center gap-1.5 overflow-x-auto w-full md:w-auto pb-1 md:pb-0 scrollbar-none" id="category-filters">
+<button class="category-btn active px-4 py-1.5 rounded-full font-label-md text-label-md bg-primary text-on-primary transition-all whitespace-nowrap shadow-sm" onclick="filterCategory('all', this)">
+            All Photographs
+          </button>
+<button class="category-btn px-4 py-1.5 rounded-full font-label-md text-label-md bg-surface-container hover:bg-surface-container-high text-charcoal-bronze transition-all whitespace-nowrap" onclick="filterCategory('sadhana', this)">
+            Himalayan Sadhana &amp; Rishikesh
+          </button>
+<button class="category-btn px-4 py-1.5 rounded-full font-label-md text-label-md bg-surface-container hover:bg-surface-container-high text-charcoal-bronze transition-all whitespace-nowrap" onclick="filterCategory('guru', this)">
+            With Holy Master Sivananda
+          </button>
+<button class="category-btn px-4 py-1.5 rounded-full font-label-md text-label-md bg-surface-container hover:bg-surface-container-high text-charcoal-bronze transition-all whitespace-nowrap" onclick="filterCategory('discourses', this)">
+            Global Discourses &amp; Travels
+          </button>
+<button class="category-btn px-4 py-1.5 rounded-full font-label-md text-label-md bg-surface-container hover:bg-surface-container-high text-charcoal-bronze transition-all whitespace-nowrap" onclick="filterCategory('ashram', this)">
+            Ashram Life &amp; Daily Seva
+          </button>
+</div>
+<!-- Quick Search & Grid Layout Toggles -->
+<div class="flex items-center gap-space-sm w-full md:w-auto justify-end">
+<div class="relative flex items-center bg-surface-container-lowest rounded-lg border border-sacred-parchment px-3 py-1.5 w-full md:w-60 shadow-inner">
+<span class="material-symbols-outlined text-sm text-secondary mr-2">search</span>
+<input class="w-full bg-transparent font-body-sm text-body-sm text-charcoal-bronze placeholder:text-on-surface-variant/60 focus:outline-none" id="gallery-search" oninput="searchGallery(this.value)" placeholder="Search photographs..." type="text">
+</div>
+<span class="text-outline-variant hidden sm:inline">|</span>
+<div class="hidden sm:flex items-center gap-1 bg-surface-container-low p-1 rounded-lg">
+<button class="p-1 rounded text-on-surface-variant hover:text-charcoal-bronze hover:bg-surface-container-lowest" onclick="setGridColumns(3)" title="3 Columns">
+<span class="material-symbols-outlined text-base">grid_view</span>
+</button>
+<button class="p-1 rounded text-on-surface-variant hover:text-charcoal-bronze hover:bg-surface-container-lowest" onclick="setGridColumns(4)" title="4 Columns">
+<span class="material-symbols-outlined text-base">apps</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- CORE PHOTO GALLERY GRID -->
+<section class="max-w-[1200px] mx-auto px-gutter py-space-xl"><div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-4 md:gap-5 auto-rows-[220px] md:auto-rows-[250px] transition-all duration-300" id="gallery-grid">
+<!-- Collage Item 1: Wide Featured Hero Panorama -->
+<div class="gallery-item group relative md:col-span-8 md:row-span-2 rounded-2xl overflow-hidden cursor-pointer shadow-sm hover:shadow-2xl transition-all duration-500 bg-charcoal-soft" data-category="sadhana" onclick="openLightbox(0)">
+<img alt="Swami Chidananda in morning silent meditation on the rocks overlooking the Ganges river in Rishikesh" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAev7c3cTuVVE31HLWMm8xH3hhZJ2-LaMHNql4EAeipCnJvIK0Lrvwa953RXKKp0TFlArpL1GOYUkh_-lOG5ZizJbCLqWJY3uwVWunGUKUCdDBAy_Zn0v_7CdUWictKwoNGF97tbGvjTZhW1yr0XkynjHMixzBA1p08kLTo2SqxXQWpEgLY2YeONI3WYf6CvLEWz53xpmBRZ4gYjL4junoaDlK8696Z_bADFm8x98-BxDgJnNTnp2XE">
+
+</div>
+<!-- Collage Item 2: Tall Vertical Portrait -->
+<div class="gallery-item group relative md:col-span-4 md:row-span-2 rounded-2xl overflow-hidden cursor-pointer shadow-sm hover:shadow-2xl transition-all duration-500 bg-charcoal-soft" data-category="guru" onclick="openLightbox(1)">
+<img alt="Historic photograph of young Swami Chidananda sitting beside Guru Swami Sivananda" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfwO-vQtyoDCdMzVGU1uFyaJwfR_S-FHUTT9sOQZ9KXgHTi299rK-99vimlOQ_E1Z88eMPlMsUspyAwTtLGW4Gke4ixCJ4Mo99BfMHkgxzn_F65vFQesCPVb9mzwErY9NoMFCw-0i-enLYRlsnGyp14OHVspQaIVu3sYodw86jOv-Acb5hc3BJafnxwC9FKqJFHMQjFn0oA28UxB5lc830dZhlOvcfoTv2lxp332_R9UZharLch4eH">
+
+</div>
+<!-- Collage Item 3: Square Photo -->
+<div class="gallery-item group relative md:col-span-4 md:row-span-1 rounded-2xl overflow-hidden cursor-pointer shadow-sm hover:shadow-2xl transition-all duration-500 bg-charcoal-soft" data-category="sadhana" onclick="openLightbox(2)">
+<img alt="Monastic Sannyasa Ordination at Ganges" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQpnMTIFhvTOMXXTcznChLVTry5-BijZpybk7lPp6ULztbaHV7BSJBwks6sq4AnRs0rH6DTPAMD5BiOzX80F1EBUtlMqFc44V_UBE4nyndRUUq9WQK5NS8JViJiTb6hYJxdlcegpxyzlHH96mjhbgonx0cCMOVhP9dbNr4eBCjw_tEfEiTJ_9_Q0s17jOUaDalq3bumsLnuIdfBW3T6gb3SoxANVb-cR0_xcjNZ8BmLsfgG2ChVRVd">
+
+
+</div>
+<!-- Collage Item 4: Wide Mid Photo -->
+<div class="gallery-item group relative md:col-span-4 md:row-span-1 rounded-2xl overflow-hidden cursor-pointer shadow-sm hover:shadow-2xl transition-all duration-500 bg-charcoal-soft" data-category="discourses" onclick="openLightbox(3)">
+<img alt="Swami Chidananda giving discourse at Tapovan" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQLXc9MprTqwAgFmitiMvQrRs24sfOXhnd7yI3fCD6T0XGqThaKien5JJ80xCGztSQIj2bAIB6BXEqhhhIPATQEuV0AXJ2EyCyEcM9wcjSglVVWKWDeBXYstlL7GjzQVZYaM-EKEFW1KLEa_I91zMF79TjiCVzDuQZZo3UdU1AWT-FSGBNjbnf3XsfWdA804JS43rjXMOh27mG8QKhDKCTiZSdV8RctpbCKrr7hCH8SiDFoqkXWXtJ">
+
+
+</div>
+<!-- Collage Item 5: Compact Square Photo -->
+<div class="gallery-item group relative md:col-span-4 md:row-span-1 rounded-2xl overflow-hidden cursor-pointer shadow-sm hover:shadow-2xl transition-all duration-500 bg-charcoal-soft" data-category="discourses" onclick="openLightbox(4)">
+<img alt="Teaching Under the Sacred Banyan" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSl9KWgv0RXr6JchUtho2n3JwPB9MreGhX633xJ4pb6svpHe1uzsYXUYihA60VuaTBrgtGMlJoNKZ1pQk-f929smx_QTuYSxuQc92mE4Gt6lX_eXmyuRTdAyb-YajyI-G26pxCbkelUbGt6Lx12K75xGdauCeGU38BQ3Z2SNoMBW0TgpCZRsvIQ1_1Oh1xbQfRZgHRQXuPp1MzoJTmH1746DduGo-YKIgj4U2NuEe95mvW74y8IXCZ">
+
+
+</div>
+<!-- Collage Item 6: Tall Vertical Photo -->
+<div class="gallery-item group relative md:col-span-5 md:row-span-2 rounded-2xl overflow-hidden cursor-pointer shadow-sm hover:shadow-2xl transition-all duration-500 bg-charcoal-soft" data-category="sadhana" onclick="openLightbox(5)">
+<img alt="Pilgrimage to Mount Kailash" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4yLkuum19EKT_SRVacOCs9THOZ-vVXzjylb7Xj8LNiWykt5lMxZFG0Au57NR6gwQGjOWfNQznVTfW6mNICDiXuH2a2hiDjAzmFQw91sv6Ayph4w6iYRA9s39aPrpuHOuLnYEUT0bjUhm_Qjlvzhg4xlejuKOPJSPBj1qR_HWSGD1RtuPY5VKbAk2kNogrOUwYnMJUGYQ6IBBRA6oy6wdfeHy_6hepfC-Ogm_Te27FBQwYBQstAUd8">
+
+</div>
+<!-- Collage Item 7: Wide Action Photo -->
+<div class="gallery-item group relative md:col-span-7 md:row-span-1 rounded-2xl overflow-hidden cursor-pointer shadow-sm hover:shadow-2xl transition-all duration-500 bg-charcoal-soft" data-category="ashram" onclick="openLightbox(6)">
+<img alt="Daily Seva to the Ailing" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJ0fPovU4Sa61MCREJmhvS6l_raB4nqhs123v7Syf4E7vVyuc3cvomuQCn0nFv99LCcZ_PjeM9CJYKXdn8TivMqrYjlF6w5L1GLlcx69Lyx6XVh50ygZ_HuL0oHmVI0Xbx9aOz3sQgop6jtYmNBY8A-6UMuQj4iZMMu-AQrS1c6Zoie9vgdN3M5SK7XycNzGx2MFcgnDRITaCME50_INtus_xkW_yQ0NsUpN7j1f_7eXUQ1kdidI25">
+
+</div>
+<!-- Collage Item 8: Atmospheric Satsang Photo -->
+<div class="gallery-item group relative md:col-span-7 md:row-span-1 rounded-2xl overflow-hidden cursor-pointer shadow-sm hover:shadow-2xl transition-all duration-500 bg-charcoal-soft" data-category="ashram" onclick="openLightbox(8)">
+<img alt="Ganga Aarti at Triveni Ghat" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgndxi1fD3w8dzlxI9z2I84FWeM_xFq8jYMtF2W8wVkg8ohOmFE8Z3tIvoNHtRobnMvbPdZL7rSkHrFDRPBl36wuty-rzIfkhz3AKVtAYle87ikv9A6ODEjaQlLLveWaZg8ah3sJa0lHGM4WMOjx0GXsJNEMBrrj9yHbbRFU7v5BEHyBahmqCBIsONwZyZ37IO8-3mKPSoChlFrkFuyIZitvA7TlUMlEvIcC1fnjCcqkL-AGwVTR8V">
+
+</div>
+<!-- Collage Item 9: Square Photo -->
+<div class="gallery-item group relative md:col-span-4 md:row-span-1 rounded-2xl overflow-hidden cursor-pointer shadow-sm hover:shadow-2xl transition-all duration-500 bg-charcoal-soft" data-category="discourses" onclick="openLightbox(7)">
+<img alt="Universal Brotherhood Assembly" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0OfWy9O34sGlzx27bY2WwLOeezvlqIgbgP3Kg5mhMYBgzYPSMbBn7wng4zrce70CvwwBtbaqyIqnb4VX4M5i7UwuOQCnJUQ0JfhwgTCQB0sL4QS2pihiiiHe_ktTvpSFIgFD1AcyXsskesDfXbJ8QlR7UV3shRqFucNKjHUtnmcxOhwGytZU2mLvjwFkx2bbaxeT64vwnfWm0z4GVO6oJKNJV77P2SeiCh76cTUelmdbcI6eekQpa">
+
+
+</div>
+<!-- Collage Item 10: Square Photo -->
+<div class="gallery-item group relative md:col-span-4 md:row-span-1 rounded-2xl overflow-hidden cursor-pointer shadow-sm hover:shadow-2xl transition-all duration-500 bg-charcoal-soft" data-category="ashram" onclick="openLightbox(9)">
+<img alt="Consecration of Akhanda Diya" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5MRnRNt0zexoXL1jQzNllAp8N24jNzOxFQq-dR2RIO9g7jhgYV8YDlW0n7vmQTH8fIegUB7sqfGarpelATejWMS4yrrLWjtzxIeG8VWAyWSkN8NdoEHhLqKwWCsb8QICaDTYhSkyWnOofZ0e-jyCIg2PRchfdC6ejnx3nIhkwexqOWT_76BqV652AU2L7onKS64icxxOwntpNf5nyjZLNWocfNLd3qo5mVCpRP3z1COucSouBMe1h">
+
+
+</div>
+<!-- Collage Item 11: Square Photo -->
+<div class="gallery-item group relative md:col-span-4 md:row-span-1 rounded-2xl overflow-hidden cursor-pointer shadow-sm hover:shadow-2xl transition-all duration-500 bg-charcoal-soft" data-category="discourses" onclick="openLightbox(10)">
+<img alt="Centenary of Parliament of Religions" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdtxhuT1HqiaE4322Iv4-nodNoLPO1CCrLEygVjvg4De3MHcj4Ac2M7E9NHLD9R4yn5IZTA7dlesDHB5Q8PdXcXCTzCezNHmjwPvpZJ41IOhMBVztMvv_OV5Vjs62u9qLhzgod9DVjGGmOQDLmBrY1pdBloMi8dqz8dGcuL6Rplx3_5O3ZXRh_lS4FZ7PhH0FhWVGz6TM1_a-9dkYAcTMGcfbj0gLqYlFw52_oF0Df3rmKae8fdc4r">
+
+
+</div>
+</div>
+<!-- GALLERY PAGINATION & FOOTNOTE -->
+<div class="mt-space-2xl pt-space-lg border-t border-sacred-parchment flex flex-col sm:flex-row items-center justify-between gap-space-md">
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+    Displaying <span class="font-semibold text-charcoal-bronze" id="item-count">11</span> historical photographic plates from the sacred archive
+  </p>
+<div class="flex items-center gap-1.5">
+<button class="px-3 py-1.5 rounded-lg border border-sacred-parchment bg-surface-container-lowest text-on-surface-variant hover:text-charcoal-bronze font-label-sm text-label-sm transition-colors disabled:opacity-50" disabled="">
+      Previous
+    </button>
+<span class="w-8 h-8 rounded-lg bg-primary text-on-primary font-label-sm text-label-sm flex items-center justify-center font-bold">1</span>
+<button class="w-8 h-8 rounded-lg bg-surface-container-lowest border border-sacred-parchment text-charcoal-bronze font-label-sm text-label-sm flex items-center justify-center hover:bg-surface-container transition-colors">2</button>
+<button class="w-8 h-8 rounded-lg bg-surface-container-lowest border border-sacred-parchment text-charcoal-bronze font-label-sm text-label-sm flex items-center justify-center hover:bg-surface-container transition-colors">3</button>
+<span class="px-1 text-on-surface-variant">...</span>
+<button class="px-3 py-1.5 rounded-lg border border-sacred-parchment bg-surface-container-lowest text-charcoal-bronze hover:bg-surface-container font-label-sm text-label-sm transition-colors">
+      Next
+    </button>
+</div>
+</div></section>
+<!-- ARCHIVAL PRESERVATION CITATION BANNER -->
+<section class="w-full bg-sandalwood-cream border-t border-sacred-parchment py-space-xl px-gutter">
+<div class="max-w-[1200px] mx-auto flex flex-col md:flex-row items-center justify-between gap-space-lg bg-surface-container-lowest p-space-lg rounded-2xl border border-sacred-parchment shadow-sm">
+<div class="flex items-start gap-space-md">
+<div class="w-12 h-12 rounded-xl bg-sandalwood-muted text-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-2xl">menu_book</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-charcoal-bronze">Archival Preservation Notice</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 max-w-2xl leading-relaxed">
+              These rare photographic prints and negatives are maintained in spiritual trust. High-resolution archival copies for research, ashram shrines, or publication may be requested via the monastic secretariat.
+            </p>
+</div>
+</div>
+<a class="inline-flex items-center gap-2 bg-charcoal-bronze hover:bg-charcoal-soft text-sandalwood-cream px-space-lg py-2.5 rounded-xl font-label-md text-label-md transition-all shadow-sm whitespace-nowrap" href="#">
+<span class="material-symbols-outlined text-base text-marigold-gold">mail</span> Request Archival Prints
+        </a>
+</div>
+</section>
+</main>
+<!-- LIGHTBOX MODAL (CLEAN & MINIMALIST) -->
+<div class="fixed inset-0 z-50 bg-charcoal-bronze/90 backdrop-blur-md hidden flex items-center justify-center p-4 sm:p-6 transition-all" id="lightbox-modal" onclick="closeLightbox(event)">
+<div class="relative max-w-4xl w-full bg-surface-container-lowest rounded-2xl overflow-hidden shadow-2xl flex flex-col md:flex-row max-h-[90vh]" onclick="event.stopPropagation()">
+<!-- Close Button -->
+<button class="absolute top-3 right-3 z-20 w-9 h-9 rounded-full bg-charcoal-bronze/70 hover:bg-charcoal-bronze text-sandalwood-cream flex items-center justify-center transition-colors" onclick="closeLightbox(null)">
+<span class="material-symbols-outlined text-lg">close</span>
+</button>
+<!-- Image Area with Nav Controls -->
+<div class="relative w-full md:w-3/5 bg-charcoal-soft flex items-center justify-center min-h-[300px] md:min-h-[480px]">
+<img alt="Swami Chidananda photograph" class="max-h-[75vh] w-auto max-w-full object-contain" id="lightbox-img" src="">
+<!-- Prev & Next Overlay Buttons -->
+<button class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-charcoal-bronze/60 hover:bg-charcoal-bronze text-sandalwood-cream flex items-center justify-center transition-colors" onclick="prevLightbox()">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-charcoal-bronze/60 hover:bg-charcoal-bronze text-sandalwood-cream flex items-center justify-center transition-colors" onclick="nextLightbox()">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+<!-- Details Panel -->
+<div class="w-full md:w-2/5 p-space-lg flex flex-col justify-between bg-surface-container-lowest overflow-y-auto">
+<div>
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-widest font-semibold" id="lightbox-category">Category</span>
+<span class="bg-sandalwood-muted text-charcoal-bronze px-2.5 py-0.5 rounded font-label-sm text-label-sm font-semibold" id="lightbox-year">Year</span>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-charcoal-bronze leading-snug" id="lightbox-title">Photograph Title</h2>
+<div class="flex items-center gap-1 text-on-surface-variant font-label-sm text-label-sm mt-2">
+<span class="material-symbols-outlined text-xs text-secondary">location_on</span>
+<span id="lightbox-location" class="">Location</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-4 leading-relaxed" id="lightbox-desc">
+            Detailed archival description of the photographic plate.
+          </p>
+<div class="mt-6 pt-4 border-t border-sacred-parchment/80">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider block mb-1">Archival Catalog Reference</span>
+<span class="font-body-sm text-body-sm font-semibold text-charcoal-bronze" id="lightbox-plate">Plate #01 • Divine Life Archives</span>
+</div>
+</div>
+<div class="mt-6 pt-4 border-t border-sacred-parchment/80 flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant" id="lightbox-counter">1 of 12</span>
+<button class="text-primary hover:underline font-label-sm text-label-sm font-semibold" onclick="closeLightbox(null)">
+            Back to Gallery
+          </button>
+</div>
+</div>
+</div>
+</div>
+<!-- FOOTER -->
+<footer class="w-full bg-sandalwood-muted shadow-[0_-4px_24px_rgba(158,42,43,0.04)]">
+<div class="max-w-[1200px] mx-auto px-gutter py-space-2xl">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<div class="md:col-span-4 flex flex-col gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="font-title-scripture text-title-scripture text-primary">ॐ</span>
+<h3 class="font-headline-sm text-headline-sm text-charcoal-bronze">Swami Chidananda</h3>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            An ordained monastic disciple and profound exponent of Advaita Vedanta philosophy, dedicating a lifetime to guiding contemplative seekers toward self-realization, pristine awareness, and inner stillness inspired by the timeless teachings of the Himalayan tradition.
+          </p>
+</div>
+<div class="md:col-span-4 flex flex-col gap-space-sm">
+<h4 class="font-label-lg text-label-lg text-charcoal-bronze uppercase tracking-widest font-semibold">Wisdom Pathways</h4>
+<ul class="flex flex-col gap-space-xs font-body-sm text-body-sm text-on-surface-variant">
+<li class="py-0.5"><a class="hover:text-primary transition-colors" data-path="about" href="about.html">About Swami Chidananda</a></li>
+<li class="py-0.5"><a class="hover:text-primary transition-colors" data-path="books" href="books.html">Sacred Books &amp; Publications</a></li>
+<li class="py-0.5"><a class="hover:text-primary transition-colors" data-path="gallery" href="gallery.html">Photo &amp; Ashram Gallery</a></li>
+<li class="py-0.5"><a class="hover:text-primary transition-colors" data-path="media-library" href="media.html">Media Library (Bhajans &amp; Discourses)</a></li>
+</ul>
+</div>
+<div class="md:col-span-4 flex flex-col gap-space-sm">
+<h4 class="font-label-lg text-label-lg text-charcoal-bronze uppercase tracking-widest font-semibold">Vedanta Reflections</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Receive monthly contemplative discourses, sacred sutra analyses, and published spiritual papers in your sanctuary.</p>
+<form class="flex items-center gap-space-xs mt-space-xs" onsubmit="event.preventDefault();">
+<input class="w-full bg-surface-container-lowest text-charcoal-bronze placeholder:text-charcoal-soft/60 px-space-md py-space-sm rounded-lg font-body-sm text-body-sm outline-none shadow-[0_1px_4px_rgba(0,0,0,0.03)] focus:ring-1 focus:ring-secondary" placeholder="Your spiritual email address..." type="email">
+<button class="bg-primary text-on-primary hover:bg-saffron-vibrant px-space-md py-space-sm rounded-lg font-label-md text-label-md transition-colors" type="submit">Subscribe</button>
+</form>
+</div>
+</div>
+<div class="mt-space-2xl pt-space-lg flex flex-col md:flex-row items-center justify-between gap-space-md font-body-sm text-body-sm text-on-surface-variant">
+<p class="text-center md:text-left">© 2026–35 Swami Chidananda. All spiritual works preserved under sacred trust.</p>
+<span class="font-title-scripture text-title-scripture text-primary font-medium tracking-wide">ॐ शान्तिः शान्तिः शान्तिः</span>
+</div>
+</div>
+</footer>
+<!-- LIGHTBOX & GALLERY LOGIC -->
+<script>
+    const galleryData = [
+      {
+        src: "https://lh3.googleusercontent.com/aida-public/AB6AXuAMoK4d8m_wFYv4bgo305Yh0IdAxNd02AMRgMRYb7YZqWcjKd-1ULJvItVG5JdhKiw3M5zA0kqaYkAlaeD2k-o-TKEAHdT8LmArFBy323-4Cc3WuLmbAOZ9lw5QcjGPikDiUz-N8NQO3YSLnk00SZksi7kZjDyfrhZquuloZqVRZkQUMVn0hmBz_D3TXxD2k5CWMYqhsWFXwhh_MEwtZlNr-jbhwzn6sX7xnQItdXvMv_I74kNpLYD",
+        title: "The Silent Sage of Rishikesh",
+        category: "Himalayan Sadhana",
+        year: "1965",
+        location: "Tapovan, Rishikesh, Uttarakhand",
+        plate: "Plate #01 • Divine Life Archives",
+        desc: "Captured during Swamiji's morning samadhi contemplation by the tranquil current of Mother Ganga at Tapovan. Swamiji spent long predawn hours in absolute silence here before the morning ashram prayers."
+      },
+      {
+        src: "https://lh3.googleusercontent.com/aida-public/AB6AXuAfwO-vQtyoDCdMzVGU1uFyaJwfR_S-FHUTT9sOQZ9KXgHTi299rK-99vimlOQ_E1Z88eMPlMsUspyAwTtLGW4Gke4ixCJ4Mo99BfMHkgxzn_F65vFQesCPVb9mzwErY9NoMFCw-0i-enLYRlsnGyp14OHVspQaIVu3sYodw86jOv-Acb5hc3BJafnxwC9FKqJFHMQjFn0oA28UxB5lc830dZhlOvcfoTv2lxp332_R9UZharLch4eH",
+        title: "With Holy Master Swami Sivananda",
+        category: "Guru-Shishya Parampara",
+        year: "1943",
+        location: "Ananda Kutir, Rishikesh",
+        plate: "Plate #03 • Divine Life Archives",
+        desc: "A rare historic portrait of young Swami Chidananda sitting attentively beside his beloved Gurudev Sri Swami Sivanandaji Maharaj during his formative monastic apprenticeship along the holy Ganga."
+      },
+      {
+        src: "https://lh3.googleusercontent.com/aida-public/AB6AXuAQpnMTIFhvTOMXXTcznChLVTry5-BijZpybk7lPp6ULztbaHV7BSJBwks6sq4AnRs0rH6DTPAMD5BiOzX80F1EBUtlMqFc44V_UBE4nyndRUUq9WQK5NS8JViJiTb6hYJxdlcegpxyzlHH96mjhbgonx0cCMOVhP9dbNr4eBCjw_tEfEiTJ_9_Q0s17jOUaDalq3bumsLnuIdfBW3T6gb3SoxANVb-cR0_xcjNZ8BmLsfgG2ChVRVd",
+        title: "Sannyasa Diksha at Ganges",
+        category: "Monastic Initiation",
+        year: "1948",
+        location: "Ganga Ghats, Sivananda Ashram",
+        plate: "Plate #07 • Divine Life Archives",
+        desc: "Consecrated into holy Sannyasa by worshipful Gurudev Swami Sivanandaji Maharaj on sacred Guru Purnima day, July 10, 1948, taking the monastic name Swami Chidananda (Consciousness and Bliss)."
+      },
+      {
+        src: "https://lh3.googleusercontent.com/aida-public/AB6AXuBQLXc9MprTqwAgFmitiMvQrRs24sfOXhnd7yI3fCD6T0XGqThaKien5JJ80xCGztSQIj2bAIB6BXEqhhhIPATQEuV0AXJ2EyCyEcM9wcjSglVVWKWDeBXYstlL7GjzQVZYaM-EKEFW1KLEa_I91zMF79TjiCVzDuQZZo3UdU1AWT-FSGBNjbnf3XsfWdA804JS43rjXMOh27mG8QKhDKCTiZSdV8RctpbCKrr7hCH8SiDFoqkXWXtJ",
+        title: "Morning Discourse at Tapovan Kutir",
+        category: "Spiritual Satsangs",
+        year: "1974",
+        location: "Tapovan Kutir, Rishikesh",
+        plate: "Plate #14 • Divine Life Archives",
+        desc: "Disciples from across the globe gather at dawn as Swamiji expounds the deep inner meanings of Self-Realization, renunciation, and unconditioned love for all creation."
+      },
+      {
+        src: "https://lh3.googleusercontent.com/aida-public/AB6AXuCSl9KWgv0RXr6JchUtho2n3JwPB9MreGhX633xJ4pb6svpHe1uzsYXUYihA60VuaTBrgtGMlJoNKZ1pQk-f929smx_QTuYSxuQc92mE4Gt6lX_eXmyuRTdAyb-YajyI-G26pxCbkelUbGt6Lx12K75xGdauCeGU38BQ3Z2SNoMBW0TgpCZRsvIQ1_1Oh1xbQfRZgHRQXuPp1MzoJTmH1746DduGo-YKIgj4U2NuEe95mvW74y8IXCZ",
+        title: "Teaching Under the Sacred Banyan",
+        category: "Scriptural Exposition",
+        year: "1971",
+        location: "Garhwal Foothills, Himalayas",
+        plate: "Plate #19 • Divine Life Archives",
+        desc: "Swamiji delivering verse-by-verse reflections on the Katha Upanishad and the eternal enquiry of Nachiketa under the ancient banyan trees at the base of the Himalayas."
+      },
+      {
+        src: "https://lh3.googleusercontent.com/aida-public/AB6AXuD4yLkuum19EKT_SRVacOCs9THOZ-vVXzjylb7Xj8LNiWykt5lMxZFG0Au57NR6gwQGjOWfNQznVTfW6mNICDiXuH2a2hiDjAzmFQw91sv6Ayph4w6iYRA9s39aPrpuHOuLnYEUT0bjUhm_Qjlvzhg4xlejuKOPJSPBj1qR_HWSGD1RtuPY5VKbAk2kNogrOUwYnMJUGYQ6IBBRA6oy6wdfeHy_6hepfC-Ogm_Te27FBQwYBQstAUd8",
+        title: "Pilgrimage to Mount Kailash",
+        category: "Tirtha Yatra",
+        year: "1956",
+        location: "Mount Kailash, Western Tibet",
+        plate: "Plate #24 • Divine Life Archives",
+        desc: "During his arduous six-week pilgrimage across Himalayan passes to the holy abode of Mount Kailash and the sacred waters of Lake Manasarovar."
+      },
+      {
+        src: "https://lh3.googleusercontent.com/aida-public/AB6AXuBJ0fPovU4Sa61MCREJmhvS6l_raB4nqhs123v7Syf4E7vVyuc3cvomuQCn0nFv99LCcZ_PjeM9CJYKXdn8TivMqrYjlF6w5L1GLlcx69Lyx6XVh50ygZ_HuL0oHmVI0Xbx9aOz3sQgop6jtYmNBY8A-6UMuQj4iZMMu-AQrS1c6Zoie9vgdN3M5SK7XycNzGx2MFcgnDRITaCME50_INtus_xkW_yQ0NsUpN7j1f_7eXUQ1kdidI25",
+        title: "Daily Seva to the Ailing",
+        category: "Living Vedanta in Action",
+        year: "1979",
+        location: "Rishikesh Seva Kutir",
+        plate: "Plate #31 • Divine Life Archives",
+        desc: "Swamiji personally attending to leprosy patients with his own hands, embodying Sri Ramakrishna's dictum: 'Shiva Jnane Jiva Seva' (Serve man as God Himself)."
+      },
+      {
+        src: "https://lh3.googleusercontent.com/aida-public/AB6AXuB0OfWy9O34sGlzx27bY2WwLOeezvlqIgbgP3Kg5mhMYBgzYPSMbBn7wng4zrce70CvwwBtbaqyIqnb4VX4M5i7UwuOQCnJUQ0JfhwgTCQB0sL4QS2pihiiiHe_ktTvpSFIgFD1AcyXsskesDfXbJ8QlR7UV3shRqFucNKjHUtnmcxOhwGytZU2mLvjwFkx2bbaxeT64vwnfWm0z4GVO6oJKNJV77P2SeiCh76cTUelmdbcI6eekQpa",
+        title: "Universal Brotherhood Assembly",
+        category: "Global Outreach",
+        year: "1982",
+        location: "Geneva, Switzerland",
+        plate: "Plate #38 • Divine Life Archives",
+        desc: "Addressing an international council of spiritual practitioners, highlighting the core unity underlying all genuine faiths and religious disciplines."
+      },
+      {
+        src: "https://lh3.googleusercontent.com/aida-public/AB6AXuBgndxi1fD3w8dzlxI9z2I84FWeM_xFq8jYMtF2W8wVkg8ohOmFE8Z3tIvoNHtRobnMvbPdZL7rSkHrFDRPBl36wuty-rzIfkhz3AKVtAYle87ikv9A6ODEjaQlLLveWaZg8ah3sJa0lHGM4WMOjx0GXsJNEMBrrj9yHbbRFU7v5BEHyBahmqCBIsONwZyZ37IO8-3mKPSoChlFrkFuyIZitvA7TlUMlEvIcC1fnjCcqkL-AGwVTR8V",
+        title: "Ganga Aarti at Triveni Ghat",
+        category: "Devotional Sanctity",
+        year: "1987",
+        location: "Triveni Ghat, Rishikesh",
+        plate: "Plate #45 • Divine Life Archives",
+        desc: "Lifting the multi-tiered brass flame in solemn evening reverence as thousands of illuminated leaf boats glide peacefully downstream on Mother Ganga."
+      },
+      {
+        src: "https://lh3.googleusercontent.com/aida-public/AB6AXuB5MRnRNt0zexoXL1jQzNllAp8N24jNzOxFQq-dR2RIO9g7jhgYV8YDlW0n7vmQTH8fIegUB7sqfGarpelATejWMS4yrrLWjtzxIeG8VWAyWSkN8NdoEHhLqKwWCsb8QICaDTYhSkyWnOofZ0e-jyCIg2PRchfdC6ejnx3nIhkwexqOWT_76BqV652AU2L7onKS64icxxOwntpNf5nyjZLNWocfNLd3qo5mVCpRP3z1COucSouBMe1h",
+        title: "Consecration of Akhanda Diya",
+        category: "Vedic Ritual Sanctuary",
+        year: "1968",
+        location: "Sivananda Ashram Sanctum",
+        plate: "Plate #52 • Divine Life Archives",
+        desc: "Offering sacred samidha and ghee into the consecrated havan kunda during the installation of the perpetual prayer lamp for world peace and enlightenment."
+      },
+      {
+        src: "https://lh3.googleusercontent.com/aida-public/AB6AXuBdtxhuT1HqiaE4322Iv4-nodNoLPO1CCrLEygVjvg4De3MHcj4Ac2M7E9NHLD9R4yn5IZTA7dlesDHB5Q8PdXcXCTzCezNHmjwPvpZJ41IOhMBVztMvv_OV5Vjs62u9qLhzgod9DVjGGmOQDLmBrY1pdBloMi8dqz8dGcuL6Rplx3_5O3ZXRh_lS4FZ7PhH0FhWVGz6TM1_a-9dkYAcTMGcfbj0gLqYlFw52_oF0Df3rmKae8fdc4r",
+        title: "Centenary of Parliament of Religions",
+        category: "Historic Addresses",
+        year: "1993",
+        location: "Chicago, USA",
+        plate: "Plate #63 • Divine Life Archives",
+        desc: "Swamiji delivering a luminous keynote address at the 1993 Parliament of the World's Religions, commemorating Swami Vivekananda's historic 1893 speech."
+      },
+      {
+        src: "https://lh3.googleusercontent.com/aida-public/AB6AXuCbSrVEKVqwCx7xPM7eHmDP1yE1KSAro3x48lJNLvfvsp6RHzJp0WpUl2RwHX1tNAJ86lUXlUf5kB5N2DKPYpGkrmSSPhRPOpPMpFShTbPRGn7nJBG6JRF0xUdXkxOzdr9GxwQLE9qoJ7CNCDF8N6C4iAkUChnVAYz-P4u46RaLKrQ_nReSTOtP11Ipt17pjQY0dTGyDJAB2XuaaR_kvT9UAC6r7vBzEKn64d5nulhlDyj8kReY4JG6",
+        title: "The Universal Temple Vision",
+        category: "Architectural Legacy",
+        year: "2004",
+        location: "Shivanandanagar, Rishikesh",
+        plate: "Plate #70 • Divine Life Archives",
+        desc: "Contemplating the miniature architectural model of the shrine uniting spiritual symbols from all major traditions under a single sacred canopy."
+      }
+    ];
+
+    let currentLightboxIndex = 0;
+
+    function openLightbox(index) {
+      currentLightboxIndex = index;
+      const item = galleryData[index];
+      if (!item) return;
+
+      document.getElementById('lightbox-img').src = item.src;
+      document.getElementById('lightbox-img').alt = item.title;
+      document.getElementById('lightbox-title').innerText = item.title;
+      document.getElementById('lightbox-category').innerText = item.category;
+      document.getElementById('lightbox-year').innerText = item.year;
+      document.getElementById('lightbox-location').innerText = item.location;
+      document.getElementById('lightbox-desc').innerText = item.desc;
+      document.getElementById('lightbox-plate').innerText = item.plate;
+      document.getElementById('lightbox-counter').innerText = `${index + 1} of ${galleryData.length}`;
+
+      const modal = document.getElementById('lightbox-modal');
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox(e) {
+      const modal = document.getElementById('lightbox-modal');
+      modal.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+
+    function prevLightbox() {
+      currentLightboxIndex = (currentLightboxIndex - 1 + galleryData.length) % galleryData.length;
+      openLightbox(currentLightboxIndex);
+    }
+
+    function nextLightbox() {
+      currentLightboxIndex = (currentLightboxIndex + 1) % galleryData.length;
+      openLightbox(currentLightboxIndex);
+    }
+
+    // Filter categories
+    function filterCategory(cat, btn) {
+      const buttons = document.querySelectorAll('.category-btn');
+      buttons.forEach(b => {
+        b.className = 'category-btn px-4 py-1.5 rounded-full font-label-md text-label-md bg-surface-container hover:bg-surface-container-high text-charcoal-bronze transition-all whitespace-nowrap';
+      });
+      btn.className = 'category-btn active px-4 py-1.5 rounded-full font-label-md text-label-md bg-primary text-on-primary transition-all whitespace-nowrap shadow-sm';
+
+      const items = document.querySelectorAll('.gallery-item');
+      let visibleCount = 0;
+      items.forEach(item => {
+        const itemCat = item.getAttribute('data-category');
+        if (cat === 'all' || itemCat === cat) {
+          item.classList.remove('hidden');
+          visibleCount++;
+        } else {
+          item.classList.add('hidden');
+        }
+      });
+      document.getElementById('item-count').innerText = visibleCount;
+    }
+
+    // Filter by search query
+    function searchGallery(query) {
+      const q = query.toLowerCase().trim();
+      const items = document.querySelectorAll('.gallery-item');
+      let visibleCount = 0;
+      items.forEach(item => {
+        const text = item.innerText.toLowerCase();
+        if (text.includes(q)) {
+          item.classList.remove('hidden');
+          visibleCount++;
+        } else {
+          item.classList.add('hidden');
+        }
+      });
+      document.getElementById('item-count').innerText = visibleCount;
+    }
+
+    // Toggle grid columns
+    function setGridColumns(cols) {
+      const grid = document.getElementById('gallery-grid');
+      if (cols === 4) {
+        grid.className = 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 transition-all duration-300';
+      } else {
+        grid.className = 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 transition-all duration-300';
+      }
+    }
+
+    // Keyboard navigation for lightbox
+    document.addEventListener('keydown', (e) => {
+      const modal = document.getElementById('lightbox-modal');
+      if (!modal.classList.contains('hidden')) {
+        if (e.key === 'Escape') closeLightbox(null);
+        if (e.key === 'ArrowLeft') prevLightbox();
+        if (e.key === 'ArrowRight') nextLightbox();
+      }
+    });
+  </script>
+<script src="app.js"></script>
+</body></html>
